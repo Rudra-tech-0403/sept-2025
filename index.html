@@ -312,7 +312,7 @@
     <div id="stars-container"></div>
     <div class="sparkle-cursor"></div>
     <audio id="background-music" src="assets/birthday.mp3" loop></audio>
-    <audio id="whisper-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="whisper-audio" src="assets/ek dhun.mp3"></audio>
     
     <div id="controls-container">
         <button id="music-toggle" class="control-button" title="Toggle Music"><i class="fas fa-pause"></i></button>
@@ -580,18 +580,23 @@ I know humans make mistakes. And if my love is true, then one day you will surel
         
         // 3. Audio Surprise Button (Pause main music)
         audioSurpriseButton.addEventListener('click', () => {
+            // Check if the background music is currently playing
             if (isMusicPlaying) {
+                // If yes, pause it and remember that it was playing
                 music.pause();
                 musicWasPlayingBeforeSurprise = true;
             }
+            // Play the special audio message
             audioSurprise.play();
         });
 
         // 4. Resume main music after surprise ends
         audioSurprise.addEventListener('ended', () => {
+            // Check if the background music was paused by the surprise message
             if (musicWasPlayingBeforeSurprise) {
+                // If yes, resume the background music
                 music.play();
-                musicWasPlayingBeforeSurprise = false;
+                musicWasPlayingBeforeSurprise = false; // Reset for next time
             }
         });
 
