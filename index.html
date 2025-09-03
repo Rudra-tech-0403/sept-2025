@@ -647,6 +647,57 @@ I know humans make mistakes. And if my love is true, then one day you will surel
             }, 500);
         });
 
+        // --- ADD THIS NEW CODE BLOCK ---
+
+        // Wish Generator Logic
+        const wishButton = document.getElementById('wish-generator-button');
+        const wishOutput = document.getElementById('wish-output');
+        const wishes = [
+            "May your day be as bright as your smile!",
+            "Wishing you a year full of joy and success.",
+            "Hope your birthday is just the beginning of a happy journey.",
+            "Sending you all my love on your special day!",
+            "May all your dreams turn into reality. Happy Birthday!"
+        ];
+        wishButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * wishes.length);
+            wishOutput.textContent = wishes[randomIndex];
+        });
+
+        // Fireworks Button Logic
+        const fireworksButton = document.getElementById('fireworks-button');
+        fireworksButton.addEventListener('click', launchConfetti);
+
+        // Quiz Logic
+        const submitQuizButton = document.getElementById('submit-quiz');
+        const quizResult = document.getElementById('quiz-result');
+        submitQuizButton.addEventListener('click', () => {
+            const answer1 = document.querySelector('input[name="q1"]:checked');
+            const answer2 = document.querySelector('input[name="q2"]:checked');
+            let score = 0;
+            let resultText = "";
+
+            if (answer1 && answer1.value === 'b') {
+                score++;
+            }
+            if (answer2 && answer2.value === 'c') {
+                score++;
+            }
+
+            if (!answer1 || !answer2) {
+                resultText = "Please answer both questions!";
+            } else if (score === 2) {
+                resultText = "Wow! You got them all right! You truly remember everything. ❤️";
+            } else if (score === 1) {
+                resultText = "You got one right! Not bad at all!";
+            } else {
+                resultText = "Hmm, looks like we need to make more memories!";
+            }
+            quizResult.textContent = resultText;
+        });
+
+        // --- END OF NEW CODE BLOCK ---
+
         // REMOVE cake/candle logic
         /*
         const totalCandles = 5;
